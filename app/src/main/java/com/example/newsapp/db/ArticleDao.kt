@@ -2,7 +2,7 @@ package com.example.newsapp.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.newsapp.data.Article
+import com.example.newsapp.data.entities.Article
 
 /**
  * Created by Sebastián Pedraza on 22/09/2021.
