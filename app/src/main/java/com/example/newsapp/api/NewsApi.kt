@@ -1,5 +1,6 @@
 package com.example.newsapp.api
 
+import com.example.newsapp.data.entities.NewsResponse
 import com.example.newsapp.util.Constants.Companion.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -21,7 +22,7 @@ interface NewsApi {
         page: Int = 1,
         @Query("apiKey")
         key: String = API_KEY,
-    )
+    ): NewsResponse
 
     /**
      * Getting all news
@@ -35,6 +36,6 @@ interface NewsApi {
         page: Int = 1,
         @Query("apiKey")
         key: String = API_KEY,
-    )
+    ): NewsResponse
 
 }

@@ -1,5 +1,8 @@
 package com.example.newsapp.domain.news
 
-interface NewsRepository {
+import com.example.newsapp.data.entities.NewsResponse
+import retrofit2.Response
 
+interface NewsRepository {
+    suspend fun fetchBreakingNews(countryCode: String, pageNumber: Int): NewsResponse
 }

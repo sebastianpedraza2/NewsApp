@@ -43,14 +43,12 @@ class NewsActivity : AppCompatActivity() {
         /**
          * 1. Setting up bottom nav
          */
-        binding.bottomNavigationView.setupWithNavController(binding.navHostFragment.findNavController())
 
-        /**
-         *    val navHostFragment =
+          val navHostFragment =
         supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
-         */
+
 
     }
 }
