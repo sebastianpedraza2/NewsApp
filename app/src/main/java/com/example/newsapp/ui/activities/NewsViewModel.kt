@@ -1,16 +1,10 @@
 package com.example.newsapp.ui.activities
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
-import com.example.newsapp.data.entities.NewsResponse
 import com.example.newsapp.domain.news.NewsRepository
 import com.example.newsapp.util.Resource
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.compat.ViewModelCompat.viewModel
-import retrofit2.Response
 import java.lang.Exception
 
 class NewsViewModel(private val newsRepo: NewsRepository) : ViewModel() {
@@ -20,18 +14,33 @@ class NewsViewModel(private val newsRepo: NewsRepository) : ViewModel() {
     /**
      * Variable used for pagination
      */
-    val page = 1
+    private val breakingNewsPage = 1
+    private val searchPage = 1
 
     fun getBreakingNews(countryCode: String) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(newsRepo.fetchBreakingNews(countryCode, page)))
+            emit(Resource.Success(newsRepo.fetchBreakingNews(countryCode, breakingNewsPage)))
 
         } catch (e: Exception) {
             emit(Resource.Failure(e.message.toString()))
         }
 
     }
+
+
+    fun searchNews(searchQuery: String) = liveData(Dispatchers.IO) {
+        emit(Resource.Loading())
+        try {
+            emit(Resource.Success(newsRepo.searchNews(searchQuery, searchPage)))
+
+        } catch (e: Exception) {
+            emit(Resource.Failure(e.message.toString()))
+        }
+
+    }
+
+
 
     /**
      * This scope will be canceled when ViewModel will be cleared, i.e ViewModel.onCleared is called

@@ -10,4 +10,7 @@ class NewsDataSource(private val articleDatabase: ArticleDatabase) {
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int): NewsResponse =
         RetrofitInstance.api.getHeadlines(country = countryCode, pageNumber)
 
+    suspend fun searchNews(searchQuery: String, pageNumber: Int): NewsResponse =
+        RetrofitInstance.api.getNews(searchQuery, pageNumber)
+
 }

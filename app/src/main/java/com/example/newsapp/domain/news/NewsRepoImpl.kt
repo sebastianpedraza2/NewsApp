@@ -5,6 +5,10 @@ import com.example.newsapp.data.remote.NewsDataSource
 import retrofit2.Response
 
 class NewsRepoImpl(private val newsDataSource: NewsDataSource) : NewsRepository {
-    override suspend fun fetchBreakingNews(countryCode: String, pageNumber: Int): NewsResponse = newsDataSource.getBreakingNews(countryCode, pageNumber)
+    override suspend fun fetchBreakingNews(countryCode: String, pageNumber: Int): NewsResponse =
+        newsDataSource.getBreakingNews(countryCode, pageNumber)
+
+    override suspend fun searchNews(searchQuery: String, pageNumber: Int): NewsResponse =
+        newsDataSource.searchNews(searchQuery, pageNumber)
 
 }
