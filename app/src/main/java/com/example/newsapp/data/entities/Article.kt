@@ -3,6 +3,7 @@ package com.example.newsapp.data.entities
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 /**
  * Room table
@@ -19,4 +20,4 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+): Serializable
